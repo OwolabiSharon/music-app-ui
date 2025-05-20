@@ -32,8 +32,7 @@ export default function SignupPage() {
         first_name: firstName,
         last_name: lastName,
         email,
-        password,
-        phone
+        password
       })
       router.push("/");
     } else {
