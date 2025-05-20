@@ -37,7 +37,11 @@ export default function HomePage() {
       }
 
 
-      router.push("/dashboard");
+      if (await checkIsSignedIn()) {
+        router.push("/dashboard");
+      } else {
+        router.push("/auth/login");
+      }
     }
     initializeApp()
     // validatAuth()

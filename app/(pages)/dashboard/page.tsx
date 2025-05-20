@@ -14,7 +14,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const validateAuth = async() => {
-      if (await checkIsSignedIn()) {
+      if (!await checkIsSignedIn()) {
         router.push("/auth/login");
       } else {
         const userData = await getUser();
