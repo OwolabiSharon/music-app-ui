@@ -1,0 +1,107 @@
+{
+  "releases": [
+    {
+      "title": "Midnight Dreams",
+      "type": "album",
+      "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/midnight-dreams",
+      "trackId": "TRK123456",
+      "artistName": "Luna Nova",
+      "isrc": "USRC12345678",
+      "upc": "123456789012",
+      "releaseDate": "2024-03-15"
+    },
+    {
+      "title": "Summer Vibes",
+      "type": "single",
+      "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/summer-vibes",
+      "trackId": "TRK789012",
+      "artistName": "Solar Flare",
+      "isrc": "USRC87654321",
+      "upc": "987654321098",
+      "releaseDate": "2024-03-10"
+    },
+    {
+      "title": "Electric Soul",
+      "type": "ep",
+      "imageUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/electric-soul",
+      "trackId": "TRK345678",
+      "artistName": "Neon Pulse",
+      "isrc": "USRC23456789",
+      "upc": "456789012345",
+      "releaseDate": "2024-03-05"
+    },
+    {
+      "title": "Neon Lights",
+      "type": "single",
+      "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/neon-lights",
+      "trackId": "TRK901234",
+      "artistName": "Cyber Wave",
+      "isrc": "USRC34567890",
+      "upc": "567890123456",
+      "releaseDate": "2024-03-01"
+    },
+    {
+      "title": "Urban Echoes",
+      "type": "album",
+      "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/urban-echoes",
+      "trackId": "TRK567890",
+      "artistName": "City Pulse",
+      "isrc": "USRC45678901",
+      "upc": "678901234567",
+      "releaseDate": "2024-02-28"
+    },
+    {
+      "title": "Summer Vibes",
+      "type": "single",
+      "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/summer-vibes"
+    },
+    {
+      "title": "Electric Soul",
+      "type": "ep",
+      "imageUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/electric-soul"
+    },
+    {
+      "title": "Neon Lights",
+      "type": "single",
+      "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/neon-lights"
+    },
+    {
+      "title": "Urban Echoes",
+      "type": "album",
+      "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/urban-echoes"
+    },
+    {
+      "title": "Summer Vibes",
+      "type": "single",
+      "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/summer-vibes"
+    },
+    {
+      "title": "Electric Soul",
+      "type": "ep",
+      "imageUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/electric-soul"
+    },
+    {
+      "title": "Neon Lights",
+      "type": "single",
+      "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/neon-lights"
+    },
+    {
+      "title": "Urban Echoes",
+      "type": "album",
+      "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+      "mainUrl": "https://example.com/urban-echoes"
+    }
+  ]
+} 
