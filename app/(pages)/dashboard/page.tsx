@@ -10,6 +10,7 @@ export default function DashboardPage() {
   const [activeSection, setActiveSection] = useState("overview");
   const [user, setUser] = useState<any>(null);
   const [songs, setSongs] = useState<any[]>([]);
+  const [songCount, setSongCount] = useState<any>(0);
   const [pageDetails, setPageDetails] = useState<any>(null);
 
   useEffect(() => {
@@ -35,11 +36,20 @@ export default function DashboardPage() {
           .eq('artist_id', userData.id)
           .order('created_at', { ascending: false })
           .limit(5);
+        
+        const { data, count: songsCount, error: countError } = await supabase
+          .from('songs')
+          .select('*', { count: 'exact' })
+          .eq('artist_id', userData.id)
+          .order('created_at', { ascending: false });
+        
 
         if (error) {
           console.error('Error fetching songs:', error);
         } else {
+          setSongCount(songsCount || 0)
           setSongs(songsData || []);
+          console.log(songsData)
         }
       }
     }
@@ -57,8 +67,10 @@ export default function DashboardPage() {
         {/* Welcome Section */}
         <div className="">
           <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center text-white text-4xl font-bold">
-              {user?.first_name?.[0]?.toUpperCase() || "U"}
+            <div className="flex items-center gap-4">
+              <div className="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center text-white text-4xl font-bold">
+                {user?.first_name?.[0]?.toUpperCase() || "U"}
+              </div>
             </div>
             <div>
               <h2 className="text-3xl font-bold mb-2">
@@ -74,16 +86,16 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
             <h3 className="text-xl font-semibold mb-2">Total Songs</h3>
-            <p className="text-3xl font-bold text-blue-600">{songs.length}</p>
+            <p className="text-3xl font-bold text-blue-600">{songCount}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+          {/* <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
             <h3 className="text-xl font-semibold mb-2">Active Providers</h3>
             <p className="text-3xl font-bold text-green-600">0</p>
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+          </div> */}
+          {/* <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
             <h3 className="text-xl font-semibold mb-2">Recent Activity</h3>
             <p className="text-gray-600 dark:text-gray-400">No recent activity</p>
-          </div>
+          </div> */}
         </div>
 
         {/* Latest Releases Section */}
@@ -101,7 +113,7 @@ export default function DashboardPage() {
             {songs.map((song, index) => (
               <a
                 key={index}
-                href={song.url}
+                href="https://lynkify.in/album/jesus-loves-you/bemrRChx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
@@ -109,7 +121,7 @@ export default function DashboardPage() {
                 <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 group-hover:scale-105">
                   <div className="aspect-square relative">
                     <img
-                      src={song.cover_image_url}
+                      src={song.image_url}
                       alt={song.title}
                       className="w-full h-full object-cover"
                     />
@@ -127,7 +139,7 @@ export default function DashboardPage() {
         </div>
 
         {/* WordPress Blog Section */}
-        {pageDetails?.blog_url && (
+        {/* {pageDetails?.blog_url && (
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold">Latest Blog Posts</h2>
@@ -149,7 +161,7 @@ export default function DashboardPage() {
               />
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Sign Out Button */}
         {/* <div className="mt-8">

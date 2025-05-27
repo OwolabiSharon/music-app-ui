@@ -87,7 +87,7 @@ export default function CatalogPage() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <img
-                          src={song.cover_image_url || "/default-cover.png"}
+                          src={song.image_url || "/default-cover.png"}
                           alt={song.title}
                           className="w-10 h-10 rounded-full object-cover"
                         />
@@ -131,19 +131,13 @@ export default function CatalogPage() {
                     <td className="px-6 py-4">
                       <div className="flex gap-2">
                         <a
-                          href={song.url}
+                          href={song.link_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200"
                         >
                           Play →
                         </a>
-                        <button
-                          onClick={() => router.push(`/dashboard/catalog/edit/${song.id}`)}
-                          className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors duration-200"
-                        >
-                          Edit
-                        </button>
                       </div>
                     </td>
                   </tr>

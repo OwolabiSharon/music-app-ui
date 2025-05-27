@@ -15,7 +15,7 @@ export default function ProfilePage() {
     last_name: "",
     email: "",
     phone: "",
-    avatar_url: "",
+    profile_url: "",
     bank_name: "",
     account_name: "",
     account_number: "",
@@ -37,7 +37,7 @@ export default function ProfilePage() {
         last_name: userData?.last_name || "",
         email: userData?.email || "",
         phone: userData?.phone || "",
-        avatar_url: userData?.avatar_url || "",
+        profile_url: userData?.profile_url || "",
         bank_name: userData?.bank_name || "",
         account_name: userData?.account_name || "",
         account_number: userData?.account_number || "",
@@ -58,7 +58,7 @@ export default function ProfilePage() {
       last_name: user?.last_name || "",
       email: user?.email || "",
       phone: user?.phone || "",
-      avatar_url: user?.avatar_url || "",
+      profile_url: user?.profile_url || "",
       bank_name: user?.bank_name || "",
       account_name: user?.account_name || "",
       account_number: user?.account_number || "",
@@ -76,7 +76,7 @@ export default function ProfilePage() {
           first_name: formData.first_name,
           last_name: formData.last_name,
           phone: formData.phone,
-          avatar_url: formData.avatar_url,
+          profile_url: formData.profile_url,
           bank_name: formData.bank_name,
           account_name: formData.account_name,
           account_number: formData.account_number,
@@ -152,7 +152,7 @@ export default function ProfilePage() {
           <div className="space-y-4">
             <div className="aspect-square w-full max-w-[300px] mx-auto">
               <img
-                src={formData.avatar_url || "/default-avatar.png"}
+                src={formData.profile_url || "/default-avatar.png"}
                 alt="Profile"
                 className="w-full h-full object-cover rounded-2xl"
               />
@@ -161,7 +161,7 @@ export default function ProfilePage() {
               <input
                 type="text"
                 name="avatar_url"
-                value={formData.avatar_url}
+                value={formData.profile_url}
                 onChange={handleChange}
                 placeholder="Avatar URL"
                 className="w-full p-2 border rounded-xl dark:bg-gray-700 dark:border-gray-600"

@@ -48,11 +48,8 @@ export default function AnalyticsPage() {
           .from('analytics')
           .select(`
             *,
-            songs:song_id (
-              title,
-              cover_image_url,
-              type,
-              genre
+            songs (
+             *
             )
           `)
           .eq('songs.artist_id', userData.id)
@@ -72,15 +69,14 @@ export default function AnalyticsPage() {
   }, []);
 
   // Calculate totals
-  const totalPlays = analytics.reduce((sum, a) => sum + (a.plays || 0), 0);
-  const totalRevenue = analytics.reduce((sum, a) => sum + (a.revenue || 0), 0);
+  const totalPlays = analytics.reduce((sum, a) => sum + (a.streams || 0), 0);
   const totalDownloads = analytics.reduce((sum, a) => sum + (a.downloads || 0), 0);
 
   // Prepare monthly data for chart
   const monthlyData = analytics.reduce((acc: { [key: string]: number }, curr) => {
-    const date = new Date(curr.created_at);
+    const date = new Date(curr.date);
     const monthYear = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-    acc[monthYear] = (acc[monthYear] || 0) + (curr.plays || 0);
+    acc[monthYear] = (acc[monthYear] || 0) + (curr.streams || 0);
     return acc;
   }, {});
 
@@ -150,12 +146,6 @@ export default function AnalyticsPage() {
             </p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-            <h3 className="text-xl font-semibold mb-2">Total Revenue</h3>
-            <p className="text-3xl font-bold text-green-600">
-              ${totalRevenue.toLocaleString()}
-            </p>
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
             <h3 className="text-xl font-semibold mb-2">Total Downloads</h3>
             <p className="text-3xl font-bold text-purple-600">
               {totalDownloads.toLocaleString()}
@@ -180,8 +170,6 @@ export default function AnalyticsPage() {
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-400">Song</th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-400">Plays</th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-400">Downloads</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-400">Revenue</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-400">Platform</th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-400">Date</th>
                   </tr>
                 </thead>
@@ -191,32 +179,25 @@ export default function AnalyticsPage() {
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <img
-                            src={analytic.songs?.cover_image_url || "/default-cover.png"}
+                            src={analytic.songs?.image_url || "/default-cover.png"}
                             alt={analytic.songs?.title}
                             className="w-10 h-10 rounded-full object-cover"
                           />
                           <div>
                             <div className="font-medium">{analytic.songs?.title}</div>
                             <div className="text-sm text-gray-500 dark:text-gray-400">
-                              {analytic.songs?.type?.toUpperCase()} • {analytic.songs?.genre}
+                              {analytic.songs?.type?.toUpperCase()} • 
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 text-sm font-mono">
-                        {analytic.plays?.toLocaleString() || 0}
+                        {analytic.streams?.toLocaleString() || 0}
                       </td>
                       <td className="px-6 py-4 text-sm font-mono">
                         {analytic.downloads?.toLocaleString() || 0}
                       </td>
-                      <td className="px-6 py-4 text-sm font-mono">
-                        ${analytic.revenue?.toLocaleString() || 0}
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                          {analytic.platform?.toUpperCase()}
-                        </span>
-                      </td>
+
                       <td className="px-6 py-4 text-sm">
                         {new Date(analytic.created_at).toLocaleDateString()}
                       </td>

@@ -13,6 +13,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [stageName, setStageName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
@@ -32,7 +33,10 @@ export default function SignupPage() {
         first_name: firstName,
         last_name: lastName,
         email,
-        password
+        password,
+        stage_name: stageName,
+        phone,
+
       })
       router.push("/");
     } else {
@@ -94,8 +98,8 @@ export default function SignupPage() {
                 id="last_name"
                 type="text"
                 required
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={stageName}
+                onChange={(e) => setStageName(e.target.value)}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800"
               />
             </div>

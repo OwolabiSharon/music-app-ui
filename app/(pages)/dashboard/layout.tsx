@@ -46,11 +46,18 @@ export default function DashboardLayout({
       <div className="h-full w-[25%] p-3">
         <div className="dark:bg-[#2c2c2c] bg-neutral-50 flex flex-col gap-5 w-full h-full rounded-2xl transition-all duration-300 ease-in-out">
           {/* Title */}
-          <div className="px-6 pt-10 flex items-center gap-2" onClick={() => router.push("/")}>
-            <div className="w-10 h-10 rounded-full bg-[#2c2c2c] dark:bg-[#fefefe] transition-all duration-300 ease-in-out"></div>
-            <span className="text-3xl font-bold tracking-tighter">
-              Dashboard
-            </span>
+          <div className="px-6 pt-10 flex items-center justify-between">
+            <div className="flex items-center gap-2" onClick={() => router.push("/")}>
+            <img 
+              src="/images/chatgpt-logo.png" 
+              alt="ChatGPT Logo" 
+              className="w-8 h-8 object-contain"
+            />
+              <span className="text-3xl font-bold tracking-tighter">
+                Dashboard
+              </span>
+            </div>
+            
           </div>
 
           {/* Menu Items */}

@@ -63,7 +63,7 @@ export const signIn = async (data: { email: string; password: string }) => {
   throw new Error('Authentication failed');
 };
 
-export const signUp = async (data: { email: string; password: string; first_name: string; last_name: string }) => {
+export const signUp = async (data: { email: string; password: string; first_name: string; last_name: string; stage_name: string, phone: string }) => {
   const { data: authData, error: authError } = await supabase.auth.signUp({
     email: data.email,
     password: data.password,
@@ -80,6 +80,9 @@ export const signUp = async (data: { email: string; password: string; first_name
           id: authData.user.id,
           first_name: data.first_name,
           last_name: data.last_name,
+          stage_name: data.stage_name,
+          phone: data.phone,
+
         }
       ]);
 
@@ -89,6 +92,8 @@ export const signUp = async (data: { email: string; password: string; first_name
       ...authData.user,
       first_name: data.first_name,
       last_name: data.last_name,
+      stage_name: data.stage_name,
+      phone: data.phone,
     };
 
     setUser(userData);
