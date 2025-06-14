@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { IoIosAdd, IoMdMore } from "react-icons/io";
 import { FiTrash } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function DashboardLayout({
   children,
@@ -74,6 +75,19 @@ export default function DashboardLayout({
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* WhatsApp Button */}
+          <div className="p-3">
+            <a
+              href="https://wa.me/1234567890" // Replace with your actual WhatsApp number
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg transition-colors duration-200 font-medium w-full"
+            >
+              <FaWhatsapp className="text-xl" />
+              <span>Contact Support</span>
+            </a>
           </div>
 
           {/* Sign Out Button */}

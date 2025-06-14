@@ -43,21 +43,29 @@ export default function AnalyticsPage() {
         const userData = await getUser();
         setUser(userData);
 
-        // Fetch analytics data with joined songs
-        const { data: analyticsData, error: analyticsError } = await supabase
-          .from('analytics')
-          .select(`
-            *,
-            songs (
-             *
-            )
-          `)
-          .eq('songs.artist_id', userData.id)
-          .order('created_at', { ascending: false });
+        // Step 1: Get song IDs for this artist
+const { data: songsData, error: songsError } = await supabase
+.from('songs')
+.select('id')
+.eq('artist_id', userData.id);
 
-        if (analyticsError) throw analyticsError;
+if (songsData) {
+const songIds = songsData.map(song => song.id);
 
-        setAnalytics(analyticsData || []);
+// Step 2: Get analytics for those songs
+const { data: analyticsData, error: analyticsError } = await supabase
+  .from('analytics')
+  .select('*, songs(*)')
+  .in('song_id', songIds)
+  .order('created_at', { ascending: false });
+
+  if (analyticsError) throw analyticsError;
+  console.log(analyticsData,"analyy", userData)
+  setAnalytics(analyticsData || []);
+}
+
+        
+       
       } catch (err: any) {
         setError(err.message || 'Failed to load analytics data');
       } finally {

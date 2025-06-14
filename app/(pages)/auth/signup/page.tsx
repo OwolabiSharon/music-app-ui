@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   signUp
 } from "../../../services/supabaseService";
@@ -188,6 +189,17 @@ export default function SignupPage() {
               >
                 Terms and Conditions
               </Link>
+            </p>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              Need help?{" "}
+              <a
+                href="https://wa.me/1234567890"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-green-600 hover:text-green-500"
+              >
+                Contact us on WhatsApp
+              </a>
             </p>
           </div>
         </form>
