@@ -9,22 +9,22 @@ interface WhatsAppLinkProps {
 }
 
 export default function WhatsAppLink({ className = "" }: WhatsAppLinkProps) {
-  const [whatsappNumber, setWhatsappNumber] = useState<string>("+63 9383089987");
+  const [whatsappNumber, setWhatsappNumber] = useState<string>("639383089987");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchWhatsAppNumber = async () => {
       try {
         // First try to get from localStorage
-        const storedPageDetails = localStorage.getItem('pageDetails');
-        if (storedPageDetails) {
-          const pageDetails = JSON.parse(storedPageDetails);
-          if (pageDetails.whatsapp) {
-            setWhatsappNumber(pageDetails.whatsapp);
-            setLoading(false);
-            return;
-          }
-        }
+        // const storedPageDetails = localStorage.getItem('pageDetails');
+        // if (storedPageDetails) {
+        //   const pageDetails = JSON.parse(storedPageDetails);
+        //   if (pageDetails.whatsapp) {
+        //     setWhatsappNumber(pageDetails.whatsapp);
+        //     setLoading(false);
+        //     return;
+        //   }
+        // }
 
         // If not in localStorage, fetch from Supabase
         const { data: pageDetails, error } = await supabase
@@ -36,10 +36,13 @@ export default function WhatsAppLink({ className = "" }: WhatsAppLinkProps) {
         if (error) throw error;
 
         if (pageDetails?.whatsapp) {
-          setWhatsappNumber(pageDetails.whatsapp);
+          const sanitizedNumber = pageDetails.whatsapp.replace(/\D/g, "");
+          setWhatsappNumber(sanitizedNumber);
           // Store in localStorage for future use
           localStorage.setItem('pageDetails', JSON.stringify(pageDetails));
         }
+
+        console.log(pageDetails?.whatsapp, whatsappNumber)
       } catch (err) {
         console.error('Error fetching WhatsApp number:', err);
       } finally {
