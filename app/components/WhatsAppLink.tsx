@@ -9,7 +9,7 @@ interface WhatsAppLinkProps {
 }
 
 export default function WhatsAppLink({ className = "" }: WhatsAppLinkProps) {
-  const [whatsappNumber, setWhatsappNumber] = useState<string>("1234567890");
+  const [whatsappNumber, setWhatsappNumber] = useState<string>("+63 9383089987");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
