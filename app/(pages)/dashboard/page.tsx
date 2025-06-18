@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { checkIsSignedIn, getUser, signOut } from "../../services/supabaseService";
 import supabase from "../../services/supabase";
+import ImageCarousel from "../../components/ImageCarousel";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -61,9 +62,36 @@ export default function DashboardPage() {
     router.push("/auth/login");
   };
 
+  const featuredImages = [
+    {
+      url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070&auto=format&fit=crop",
+      title: "New Releases",
+      description: "Check out our latest music releases"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2070&auto=format&fit=crop",
+      title: "Top Artists",
+      description: "Discover trending artists on our platform"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2074&auto=format&fit=crop",
+      title: "Exclusive Content",
+      description: "Get access to exclusive music content"
+    }
+  ];
+
   return (
-    <div className="h-full">
+    <div className="min-h-full">
       <div className="space-y-8">
+        {/* Featured Carousel */}
+        <div className="w-full">
+          <ImageCarousel 
+            images={featuredImages}
+            autoPlay={true}
+            interval={5000}
+          />
+        </div>
+
         {/* Welcome Section */}
         <div className="">
           <div className="flex items-center gap-6">
