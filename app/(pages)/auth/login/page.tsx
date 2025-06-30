@@ -113,7 +113,7 @@ export default function LoginPage() {
               </p>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                 Need help?{" "}
-                <WhatsAppLink />
+                <WhatsAppLink className="auth"/>
               </p>
             </div>
           </form>
